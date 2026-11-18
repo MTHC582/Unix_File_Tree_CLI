@@ -14,11 +14,12 @@ static char PATH[MAX_LEN];
 int32_t main(int32_t argc, char **argv) {
   getpwd(PATH);
 
-  struct dirent *cur;
   DIR *dir = opendir(PATH);
+  struct dirent *cur = readdir(dir);
 
-  while (cur = readdir(dir)) {
+  while (cur) {
     puts(cur->d_name);
+    cur = readdir(dir);
   }
 
   closedir(dir);
