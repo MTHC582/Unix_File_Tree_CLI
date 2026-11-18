@@ -26,4 +26,11 @@
  * */
 int32_t getpwd(char *);
 
+/**
+ * traverses recusively through the directory
+ * making a clean tree repr
+ * param: path of inital directory
+ * */
+void traverse(char *, uint8_t);
+
 #endif
