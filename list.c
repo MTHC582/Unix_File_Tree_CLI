@@ -6,19 +6,12 @@
 #include <dirent.h>
 #include <stdint.h>
 #include <stdio.h>
-#include <unistd.h>
 
-// #define int int32_t
-#define MAX_LEN 4096
-
-char PATH[MAX_LEN];
-char *buf;
+#include "utils/utils.h"
 
 int32_t main(int32_t argc, char **argv) {
-  buf = getcwd(PATH, MAX_LEN);
-  if (buf == NULL) {
-    return -1;
-  }
+  char PATH[MAX_LEN];
+  getpwd(PATH);
 
   struct dirent *cur;
   DIR *dir = opendir(PATH);
