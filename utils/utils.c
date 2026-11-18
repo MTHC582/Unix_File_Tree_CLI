@@ -21,24 +21,33 @@ void traverse(char *path, uint8_t space) {
   DIR *dir = opendir(path);
 
   while (current_dir = readdir(dir)) {
-    const char *file_name;
-
-    file_name = current_dir->d_name;
-    int type = current_dir->d_type;
+    const char *file_name = current_dir->d_name;
+    uint8_t type = current_dir->d_type;
 
     char *spacing = malloc(space + 1);
     memset(spacing, ' ', space), spacing[space] = '\0';
 
-    if (type == 4) // Points to a Director
+    char new_path[MAX_LEN], suffix[50] = "/";
+
+    if (type == 4) // Points to a Directory
     {
-      printf(spacing, "--" CUSTOM_DIR_COLOR "%s" RESET "\n", file_name);
-      traverse(path, space + 1);
+      if (strcmp(file_name, ".") == 0 || strcmp(file_name, "..") == 0)
+        continue;
+
+      printf("%s-", spacing);
+      printf(CUSTOM_DIR_COLOR "%s" RESET "\n", file_name);
+
+      strcpy(new_path, path);
+      strcat(suffix, file_name);
+      strcat(new_path, suffix);
+
+      traverse(new_path, space + 2);
+
     } else if (type == 8) // Points to a File
     {
-      printf("--" CUSTOM_FILE_COLOR "%s" RESET "\n", file_name);
+      printf("%s-", spacing);
+      printf(CUSTOM_FILE_COLOR "%s" RESET "\n", file_name);
     }
-
-    current_dir = readdir(dir);
   }
 
   closedir(dir);
