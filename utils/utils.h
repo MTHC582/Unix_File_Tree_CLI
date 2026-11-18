@@ -6,7 +6,7 @@
 #define MAX_LEN 4096
 
 /**
- * stores path of compiled/exe file into arg provided.
+ * stores path of compiled/exe fil into arg provided.
  * param: char array with size adjusted, eg: char PATH(40XX)
  * returns errno
  * */

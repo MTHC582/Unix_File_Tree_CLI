@@ -9,8 +9,9 @@
 
 #include "utils/utils.h"
 
+static char PATH[MAX_LEN];
+
 int32_t main(int32_t argc, char **argv) {
-  char PATH[MAX_LEN];
   getpwd(PATH);
 
   struct dirent *cur;
