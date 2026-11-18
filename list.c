@@ -21,7 +21,7 @@ int32_t main(int32_t argc, char **argv) {
     const char *file_name;
 
     file_name = current_dir->d_name;
-    int type = current_dir->d_type;
+    uint8_t type = current_dir->d_type;
 
     if (type == 4) // Points to a Directory
       printf(CUSTOM_DIR_COLOR "%s" RESET "\n", file_name);
