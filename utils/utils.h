@@ -12,7 +12,7 @@
 #define YELLOW "\033[33m"
 #define BLUE "\033[34m"
 #define BOLD "\033[1m"
-#define WHITE "\033[38;5;253m"
+#define WHITE "\033[38;5;252m"
 
 // Change DIRECTORY & FILE Color from Here...
 // Default felt better for files :(
