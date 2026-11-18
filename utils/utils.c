@@ -34,7 +34,9 @@ void traverse(char *path, uint8_t space) {
       if (strcmp(file_name, ".") == 0 || strcmp(file_name, "..") == 0)
         continue;
 
-      printf("%s-", spacing);
+      printf("%s", spacing);
+      if (space)
+        printf("┗┄");
       printf(CUSTOM_DIR_COLOR "%s" RESET "\n", file_name);
 
       strcpy(new_path, path);
@@ -45,7 +47,7 @@ void traverse(char *path, uint8_t space) {
 
     } else if (type == 8) // Points to a File
     {
-      printf("%s-", spacing);
+      printf("%s┗┄", spacing);
       printf(CUSTOM_FILE_COLOR "%s" RESET "\n", file_name);
     }
   }
