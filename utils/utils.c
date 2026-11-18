@@ -1,4 +1,5 @@
 #include <dirent.h>
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -16,13 +17,16 @@ int32_t getpwd(char *path) {
   return 0;
 }
 
-void traverse(char *path, uint8_t space) {
+void traverse(char *path, _Bool hidden, uint8_t space) {
   struct dirent *current_dir;
   DIR *dir = opendir(path);
 
   while (current_dir = readdir(dir)) {
     const char *file_name = current_dir->d_name;
     uint8_t type = current_dir->d_type;
+
+    if (hidden == true && file_name[0] == '.')
+      continue;
 
     char *spacing = malloc(space + 1);
     memset(spacing, ' ', space), spacing[space] = '\0';
@@ -43,7 +47,7 @@ void traverse(char *path, uint8_t space) {
       strcat(suffix, file_name);
       strcat(new_path, suffix);
 
-      traverse(new_path, space + 2);
+      traverse(new_path, hidden, space + 2);
 
     } else if (type == 8) // Points to a File
     {

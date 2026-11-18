@@ -1,6 +1,7 @@
 #ifndef UTILS_H
 #define UTILS_H
 
+#include <stdbool.h>
 #include <stdint.h>
 
 #define MAX_LEN 4096
@@ -29,8 +30,9 @@ int32_t getpwd(char *);
 /**
  * traverses recusively through the directory
  * making a clean tree repr
- * param: path of inital directory
+ * param: path of inital directory, toggle to show hidden files
+ *        spacing between files via levels...
  * */
-void traverse(char *, uint8_t);
+void traverse(char *, _Bool, uint8_t);
 
 #endif
