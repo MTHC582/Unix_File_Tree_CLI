@@ -54,6 +54,8 @@ void traverse(char *path, _Bool hidden, uint8_t space) {
       printf("%s┗┄", spacing);
       printf(CUSTOM_FILE_COLOR "%s" RESET "\n", file_name);
     }
+
+    free(spacing);
   }
 
   closedir(dir);
