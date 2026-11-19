@@ -8,7 +8,7 @@
 #include "utils.h"
 
 int32_t getpwd(char *path) {
-  // returns path into cur path
+  // returns path into path arg.
   char *buf = getcwd(path, MAX_LEN);
   if (buf == NULL) {
     perror("Failed Loading path var");
