@@ -11,6 +11,6 @@ static char PATH[MAX_LEN];
 
 int32_t main(int32_t argc, char **argv) {
   getpwd(PATH);
-  traverse(PATH, true, 0);
+  traverse(PATH, false, 0); // manually set ShowHiddenFiles = false;
   return 0;
 }
